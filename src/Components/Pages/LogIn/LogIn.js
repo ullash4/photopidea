@@ -1,11 +1,15 @@
 import React from "react";
 import { Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import SocialLogIn from "../../Shared/SocialLogIn/SocialLogIn";
+
+
 
 const LogIn = () => {
   return (
     <>
       <div className="container my-5 p-5 shadow-lg rounded-3">
+      <h1 className="text-center mb-3 ">Log In</h1>
         <div className="row g-5">
           <div className="col-12 col-md-5">
             <img
@@ -17,7 +21,6 @@ const LogIn = () => {
           <div className="col-12 col-md-7">
             <div className=" p-4">
             <Form>
-              <h1 className="text-center mb-3 ">Log In</h1>
               <Form.Group className="mb-3" controlId="formGroupEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control type="email" placeholder="Enter email" />
@@ -33,10 +36,11 @@ const LogIn = () => {
                 </Link>{" "}
               </p>
               
-              <Button variant="primary" type="submit">
+              <Button variant="dark" type="submit">
                 Log In
               </Button>
-              <button className="btn btn-link text-decoration-none ms-3">Forgot password ?</button>
+              <button className="btn btn-link text-decoration-none ms-3">Forgot password ?</button><br />
+           <SocialLogIn></SocialLogIn>
             </Form>
             </div>
           </div>
