@@ -1,6 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import About from './Components/Pages/About/About';
+import Blogs from './Components/Pages/Blogs/Blogs';
+import CheckOut from './Components/Pages/CheckOut/CheckOut';
 import Home from './Components/Pages/Home/Home';
 import Notfound from './Components/Pages/Notfound/Notfound';
 import Reviews from './Components/Pages/Reviews/Reviews';
@@ -16,6 +18,8 @@ function App() {
         <Route path='/home' element={<Home></Home>}></Route>
         <Route path='/about' element={<About></About>}></Route>
         <Route path='/reviews' element={<Reviews></Reviews>}></Route>
+        <Route path='/blogs' element={<Blogs></Blogs>}></Route>
+        <Route path='/checkout' element={<CheckOut></CheckOut>}></Route>
         <Route path='*' element={<Notfound></Notfound>}></Route>
       </Routes>
       <Footer></Footer>
