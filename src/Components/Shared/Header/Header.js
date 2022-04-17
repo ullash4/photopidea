@@ -18,7 +18,7 @@ const Header = () => {
             </Nav>
             <Nav>
               <Customlink className='text-decoration-none text-white pb-2 fs-5 me-3' to="/checkout">Check Out</Customlink>
-              <Button>Log In</Button>
+              <Link to='/login'><Button>Log In</Button></Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
