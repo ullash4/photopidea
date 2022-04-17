@@ -48,7 +48,7 @@ const Register = () => {
                 />
               </Form.Group>
                 <p>Already user ? <Link className="text-decoration-none" to={'/login'}>Log In</Link> </p>
-              <Button variant="primary" type="submit">
+              <Button variant="dark" type="submit">
                 Sign up
               </Button>
               <SocialLogIn></SocialLogIn>
