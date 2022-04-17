@@ -1,9 +1,42 @@
 import React from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { Link, useNavigate } from "react-router-dom";
+import auth from "../../../firebase.init";
 import SocialLogIn from "../../Shared/SocialLogIn/SocialLogIn";
 
 const Register = () => {
+
+  const navigate = useNavigate()
+  const [
+    createUserWithEmailAndPassword,
+    user,
+    loading,
+    error,
+  ] = useCreateUserWithEmailAndPassword(auth);
+
+  
+
+  const handleCreateUser=(e)=>{
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    createUserWithEmailAndPassword(email, password)
+  }
+
+  let errorElement;
+
+  if (error) {
+    errorElement = <div>
+    <p>Error: {error.message}</p>
+  </div>
+  }
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+  if(user){
+    navigate('/')
+  }
 
   return (
     <>
@@ -18,7 +51,8 @@ const Register = () => {
             />
           </div>
           <div className="col-12 col-md-7">
-            <Form>
+            <Form onSubmit={handleCreateUser}>
+              {errorElement}
               <Row className="mb-2">
                 <Form.Group as={Col} controlId="formGridEmail">
                   <Form.Label>First Name *</Form.Label>
@@ -33,12 +67,12 @@ const Register = () => {
 
               <Form.Group className="mb-3" controlId="formGridAddress1">
                 <Form.Label>Email *</Form.Label>
-                <Form.Control type="email" placeholder="Your Email" required />
+                <Form.Control type="email" name="email" placeholder="Your Email" required />
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formGridAddress2">
                 <Form.Label>Password *</Form.Label>
-                <Form.Control type="password" placeholder="Password" required />
+                <Form.Control type="password" name="password" placeholder="Password" required />
               </Form.Group>
 
               <Form.Group className="mb-3" id="formGridCheckbox">
