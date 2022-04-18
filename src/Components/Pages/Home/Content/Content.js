@@ -6,7 +6,7 @@ const Content = () => {
         <div className='container my-5'>
             <div className='row g-5'>
                 <div className='col-12 col-md-5'>
-                    <img className='img-fluid rounded-3 shadow-sm' src="https://i.ibb.co/vLnRnD2/Untitled-design-1.png" alt="" />
+                    <img className='img-fluid rounded-3' src="https://media.giphy.com/media/4Z9h0KfuviJS6r3KK7/giphy.gif" alt="" />
                 </div>
                 <div className='col-12 col-md-7'>
                     <h1 className='text-center'>This is some text</h1>
