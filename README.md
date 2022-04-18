@@ -10,5 +10,6 @@ A passionate single photographer (Independent service provider website)
 - About page
 - Check out (private/protected)
 - 404 not found  page
+
 Used Technologies: React.js, React Bootstrap, React icons, React router, Toastify, React firebase hooks, Firebase
 
