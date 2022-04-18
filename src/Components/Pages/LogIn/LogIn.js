@@ -4,23 +4,25 @@ import {
   useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
 } from "react-firebase-hooks/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import SocialLogIn from "../../Shared/SocialLogIn/SocialLogIn";
 import Loading from "../../Shared/Spinner/Spinner";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const LogIn = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
 
-  const [sendPasswordResetEmail] =
-    useSendPasswordResetEmail(auth);
+  const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
 
-  const emailRef = useRef('')
+  const emailRef = useRef("");
 
   const navigate = useNavigate();
+
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   let errorElement;
 
@@ -32,8 +34,8 @@ const LogIn = () => {
     );
   }
 
-  if(loading){
-    return <Loading></Loading>
+  if (loading) {
+    return <Loading></Loading>;
   }
 
   const handleSubmitForm = (e) => {
@@ -43,19 +45,18 @@ const LogIn = () => {
     signInWithEmailAndPassword(email, password);
   };
 
-  const handleResetPassword= async()=>{
+  const handleResetPassword = async () => {
     const email = emailRef.current.value;
-    if(email){
-      await sendPasswordResetEmail(email)
-      toast('Reset password sent to your Email ')
-    }else{
-      toast('Please enter your email address')
+    if (email) {
+      await sendPasswordResetEmail(email);
+      toast("Reset password sent to your Email ");
+    } else {
+      toast("Please enter your email address");
     }
-  }
+  };
 
-  
   if (user) {
-    navigate("/");
+    navigate(from, { replace: true });
   }
 
   return (
@@ -66,9 +67,10 @@ const LogIn = () => {
           <div className="col-12 col-md-5">
             <img
               className="img-fluid rounded-3 "
-              src="https://media.giphy.com/media/ZgTR3UQ9XAWDvqy9jv/giphy.gif"
+              src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif"
               alt=""
             />
+            <h1 className="text-center">Welcome Back</h1>
           </div>
           <div className="col-12 col-md-7">
             <div className=" p-4">
@@ -91,22 +93,28 @@ const LogIn = () => {
                     placeholder="Password"
                   />
                 </Form.Group>
-                
-                
-               
+
                 <Button variant="dark" type="submit">
                   Log In
                 </Button>
               </Form>
               <p>
-                  New to PhotoPedia ?{" "}
-                  <Link className="text-decoration-none" to="/register">
-                    Register here
-                  </Link>{" "}
-                </p>
-              <p>Forget Your password ? <button onClick={handleResetPassword} className="btn btn-link text-decoration-none">Reset Password</button> </p>
+                New to PhotoPedia ?{" "}
+                <Link className="text-decoration-none" to="/register">
+                  Register here
+                </Link>{" "}
+              </p>
+              <p>
+                Forget Your password ?{" "}
+                <button
+                  onClick={handleResetPassword}
+                  className="btn btn-link text-decoration-none"
+                >
+                  Reset Password
+                </button>{" "}
+              </p>
               <ToastContainer />
-                <SocialLogIn></SocialLogIn>
+              <SocialLogIn></SocialLogIn>
             </div>
           </div>
         </div>

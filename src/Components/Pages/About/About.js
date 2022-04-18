@@ -10,7 +10,7 @@ const About = () => {
                     <p>For contact Email at : programmer@gmail.com</p>
                 </div>
                 <div>
-                <img className='rounded-3 shadow-sm' src="https://i.ibb.co/8rNFSqY/Untitled-design-11.png" alt="" />
+                <img className='rounded-3 shadow-sm' src="https://i.ibb.co/W6CRQLD/Untitled-design-7.png" alt="" />
                 </div>
             </div>
         </div>
