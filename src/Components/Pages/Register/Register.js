@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../../../firebase.init";
 import SocialLogIn from "../../Shared/SocialLogIn/SocialLogIn";
+import Loading from "../../Shared/Spinner/Spinner";
 
 const Register = () => {
 
@@ -13,7 +14,9 @@ const Register = () => {
     user,
     loading,
     error,
-  ] = useCreateUserWithEmailAndPassword(auth);
+  ] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
+
+  const [agree, setAgree] = useState(false)
 
   
 
@@ -32,7 +35,7 @@ const Register = () => {
   </div>
   }
   if (loading) {
-    return <p>Loading...</p>;
+    return <Loading></Loading>
   }
   if(user){
     navigate('/')
@@ -77,12 +80,13 @@ const Register = () => {
 
               <Form.Group className="mb-3" id="formGridCheckbox">
                 <Form.Check
+                onClick={()=>setAgree(!agree)} className={`mx-2${agree ? 'text-primary':'text-danger'}`}
                   type="checkbox"
                   label="Accepts all terms and conditions"
                 />
               </Form.Group>
                 <p>Already user ? <Link className="text-decoration-none" to={'/login'}>Log In</Link> </p>
-              <Button variant="dark" type="submit">
+              <Button disabled={!agree} variant="dark" type="submit">
                 Sign up
               </Button>
               <SocialLogIn></SocialLogIn>

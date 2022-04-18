@@ -10,6 +10,7 @@ import Register from './Components/Pages/Register/Register';
 import Reviews from './Components/Pages/Reviews/Reviews';
 import Footer from './Components/Shared/Footer/Footer';
 import Header from './Components/Shared/Header/Header';
+import RequireAuth from './Components/Shared/RequireAuth/RequireAuth';
 
 function App() {
   return (
@@ -21,7 +22,11 @@ function App() {
         <Route path='/about' element={<About></About>}></Route>
         <Route path='/reviews' element={<Reviews></Reviews>}></Route>
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
-        <Route path='/checkout' element={<CheckOut></CheckOut>}></Route>
+        <Route path='/checkout' element={
+          <RequireAuth>
+        <CheckOut></CheckOut>
+        </RequireAuth>
+        }></Route>
         <Route path='/login' element={<LogIn></LogIn>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='*' element={<Notfound></Notfound>}></Route>
