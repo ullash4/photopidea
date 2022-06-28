@@ -7,7 +7,7 @@ import auth from "../../../firebase.init";
 import Customlink from "./Customlink";
 
 const Header = () => {
-  const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
   const handleSignOut=()=>{
     signOut(auth);
   }
@@ -22,6 +22,7 @@ const Header = () => {
               <Customlink className='text-decoration-none text-white pb-2 fs-5 me-3' to="/reviews">Reviews</Customlink>
               <Customlink className='text-decoration-none text-white fs-5 me-3 pb-2' to="/blogs">Blog</Customlink>
               <Customlink className='text-decoration-none text-white pb-2 fs-5 me-3' to="/about">About</Customlink>
+              <Customlink className='text-decoration-none text-white pb-2 fs-5 me-3' to="/contactus">Contact Us</Customlink>
             </Nav>
             <Nav>
               <Customlink className='text-decoration-none text-white pb-2 fs-5 me-3' to="/checkout">Check Out</Customlink>
