@@ -6,7 +6,7 @@ function ContactUs() {
     <div className="">
       <div className="container my-5 d-flex flex-column flex-md-row justify-content-evenly align-items-center gap-3">
         <div>
-          <h1>Have a project in mind</h1>
+          <h1>Have a project in your mind</h1>
           <p>
             Reach out to us We can make something awsome together
           </p>
